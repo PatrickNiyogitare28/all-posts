@@ -1,64 +1,68 @@
 import {StyleSheet} from 'react-native';
 
- const styles = StyleSheet.create({
-    mainContainer: {
-        paddingHorizontal: 40,
-        paddingVertical: 20,
-        height: '100%',
-        backgroundColor: 'white'
-    },
+const styles = StyleSheet.create({
     container: {
-        height: '65%'
+        height: '100%',
+        backgroundColor: 'white',
+        padding: 20
     },
-    titleWrapper: {
-        height: '50%'
-    },
-    titleStyle: {
-        padding: 10,
-        textAlign: 'center',
-        fontSize: 18,
-        fontWeight: 'bold',
-    },
-    paragraphStyle: {
-        padding: 20,
-        textAlign: 'center',
-        fontSize: 16,
-    },
-    textHeaderContainer: {
-    },
-    textHeader: {
-        color: 'grey',
-        fontSize: 20,
-        fontFamily: 'poppins-regular'
-    },
-    slider: {
-        paddingVertical: 10,
-        height: 100,
+    banner: {
+        alignItems: 'center',
+        height: '30%',
+        justifyContent:'space-around',
 
     },
-    introHighligh: {
-        fontSize: 40,
-        color: 'black',
-        fontFamily: 'poppins-bold',
+    image: {
+        width: 90,
+        height:90
     },
-    paginationContainer: {
-        width: '30%',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        paddingLeft: 10
+    highlight: {
+        alignItems:'center'
     },
-    paginationItem: {
-        width: 25,
-        height: 5,
-        backgroundColor: '#cccbca',
-        borderRadius: 10
+    headerText: {
+        fontWeight: 'bold',
+        fontSize: 25,
+        color: "#424242",
+        fontFamily:'poppins-bold'
     },
-    activePaginationItem: {
-        width: 25,
-        height: 5,
-        backgroundColor: 'black',
-        borderRadius: 10
-    }
+    highlightTextContainer: {
+      marginTop: 20
+    },
+    highlightText: {
+        fontWeight: 'normal',
+        fontSize: 18,
+        color: '#5D577E',
+        textAlign:"center",
+        fontFamily:'poppins-regular'
+    },
+
+    formContainer: {
+        marginTop: 80
+    },
+    input: {
+       borderRadius: 5,
+       backgroundColor: '#f0f0f0',
+       padding: 15,
+       fontSize: 20,
+       marginVertical: 10
+
+    },
+    button: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 20,
+        borderRadius: 4,
+        backgroundColor: '#55b6cf',
+        marginVertical: 40
+      },
+      buttonText: {
+        fontSize: 18,
+        lineHeight: 21,
+        fontWeight: 'bold',
+        letterSpacing: 0.25,
+        color: 'white',
+      },
+    
 });
 
-export default styles;
+export {styles};
