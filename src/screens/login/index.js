@@ -28,7 +28,7 @@ const Login = ({navigation}) => {
            </View>
            <View>
            <Pressable style={styles.button} 
-            onPress = {() => navigation.navigate("configuration")} >
+            onPress = {() => navigation.navigate("posts")} >
                <Text style={styles.buttonText}
                >Log in</Text>
            </Pressable>

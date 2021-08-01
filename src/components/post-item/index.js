@@ -1,11 +1,14 @@
 import React from 'react';
-import {View, Text,Image} from 'react-native';
+import {View, Text,Image, TouchableOpacity} from 'react-native';
 import {styles} from './styles';
 
-const PostItem = ({post}) => {
+const PostItem = ({post, navigation}) => {
     const {container,imageWrapper, descriptionWrapper, image} = styles;
+    const handleOnNavigate = () => {
+        navigation.navigate('post')
+    }
     return (
-        <View style={container}>
+        <TouchableOpacity style={container} onPress={() => handleOnNavigate()}>
             <View style={imageWrapper}>
                 <Image style={image} source={require("../../../assets/images/post-image.jpg")} />
             </View>
@@ -44,7 +47,7 @@ const PostItem = ({post}) => {
                     </View>
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 

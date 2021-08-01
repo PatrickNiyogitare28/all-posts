@@ -10,7 +10,7 @@ const {
     container,title, titleText,floatingButtonWrapper, cardWrapper
 } = styles;
 
-const Posts = () => {
+const Posts = ({navigation}) => {
     const posts = [
         {
             "userId": 1,
@@ -53,7 +53,7 @@ const Posts = () => {
             data={posts}
             keyExtractor={(post) => post.id.toString()}
             renderItem={({ item }) => (
-                <PostItem post={item} />
+                <PostItem post={item} navigation={navigation}/>
                 )}
                 />
           </View>
