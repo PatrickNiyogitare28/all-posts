@@ -3,7 +3,7 @@ import {View, Text,Image, TouchableOpacity} from 'react-native';
 import {styles} from './styles';
 
 const PostItem = ({post, navigation}) => {
-    const {container,imageWrapper, descriptionWrapper, image} = styles;
+    const {container,imageWrapper, descriptionWrapper, image,date,dateText} = styles;
     const handleOnNavigate = () => {
         navigation.navigate('post')
     }
@@ -11,6 +11,9 @@ const PostItem = ({post, navigation}) => {
         <TouchableOpacity style={container} onPress={() => handleOnNavigate()}>
             <View style={imageWrapper}>
                 <Image style={image} source={require("../../../assets/images/post-image.jpg")} />
+                <View style={date}>
+                    <Text style={dateText}>3 Feb</Text>
+                </View>
             </View>
             <View style={descriptionWrapper}>
                 <View>

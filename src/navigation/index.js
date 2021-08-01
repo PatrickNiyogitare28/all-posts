@@ -13,10 +13,24 @@ const Stack = createNativeStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator>
+      <Stack.Screen 
+       name="post"
+       component={Post}
+       options={{
+         headerHideShadow:true,
+         title:'',
+         headerStyle: {
+          elevation: 0,
+         },
+         headerTitleStyle: {
+          fontWeight: 'normal',
+
+        },
+        headerTintColor: 'black',
+         }}/>
       <Stack.Screen name="onboard" component={Onboard} options={{headerShown: false}} />
       <Stack.Screen name="login" component={Login} options={{headerShown: false}} />
       <Stack.Screen name="posts" component={Posts} options={{headerShown: false}} />
-      <Stack.Screen name="post" component={Post}  />
     </Stack.Navigator>
   );
 }
