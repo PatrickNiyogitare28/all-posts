@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, Image, Text, ScrollView} from 'react-native';
+import {View, Image, Text, ScrollView, TouchableOpacity} from 'react-native';
 import {Icon} from 'react-native-elements';
 import {styles} from './styles';
 
-const Post = () => {
+const Post = ({navigation}) => {
    const {
        container, imageWrapper,image,bookmark,subscription,
        title, text,blogWrapper,subscriptionWrapper
@@ -17,9 +17,12 @@ const Post = () => {
                 <Icon name="bookmark" color="black" /> 
               </View>
           </View>
+          <TouchableOpacity onPress={() => navigation.navigate('userProfile')}>
           <Text style={{color: 'grey', fontFamily:'poppins-regular', fontSize: 15}}>
               By <Text style={{fontWeight: 'bold'}}>Kelly Peter</Text>
           </Text>
+          </TouchableOpacity>
+
           <View>
               <Text style={title}>
                    How to become a master in colour pallete ?

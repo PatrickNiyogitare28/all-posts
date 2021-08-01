@@ -5,7 +5,13 @@ const AuthButton = ({styles, label, navigation}) => {
    const {btnContainer,btnLabel} = styles;
    return (
        <View style={btnContainer}>
-           <TouchableOpacity style={{textAlign:'center'}} onPress={() => navigation.navigate("login")}>
+           <TouchableOpacity style={{textAlign:'center'}} onPress={() => { 
+               (navigation) ?
+                navigation.navigate("login") :
+                null
+            }
+           }
+               >
                <Text style={btnLabel}>{label}</Text>
            </TouchableOpacity>
        </View>

@@ -5,6 +5,7 @@ import Onboard from '../screens/onboard';
 import Login from '../screens/login';
 import Posts from '../screens/posts';
 import Post from '../screens/post';
+import UserProfile from '../screens/user-profile';
 
 
 enableScreens();
@@ -13,6 +14,9 @@ const Stack = createNativeStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator>
+      <Stack.Screen name="onboard" component={Onboard} options={{headerShown: false}} />
+      <Stack.Screen name="login" component={Login} options={{headerShown: false}} />
+      <Stack.Screen name="posts" component={Posts} options={{headerShown: false}} />
       <Stack.Screen 
        name="post"
        component={Post}
@@ -28,9 +32,7 @@ function MyStack() {
         },
         headerTintColor: 'black',
          }}/>
-      <Stack.Screen name="onboard" component={Onboard} options={{headerShown: false}} />
-      <Stack.Screen name="login" component={Login} options={{headerShown: false}} />
-      <Stack.Screen name="posts" component={Posts} options={{headerShown: false}} />
+      <Stack.Screen name="userProfile" component={UserProfile} options={{headerShown: false}} />
     </Stack.Navigator>
   );
 }
