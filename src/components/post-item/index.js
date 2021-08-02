@@ -7,7 +7,7 @@ const PostItem = ({post, navigation}) => {
     const {title} = post;
     const url = {uri: `https://picsum.photos/200/200?random=${post.id}`}
     const handleOnNavigate = () => {
-        navigation.navigate('post',{id: post.id})
+        navigation.navigate('post',{id: post.id, userId: post.userId, navigation})
     }
     return (
         <TouchableOpacity style={container} onPress={() => handleOnNavigate()}>

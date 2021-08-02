@@ -4,15 +4,17 @@ import {Icon} from 'react-native-elements';
 import { connect } from 'react-redux'
 import { fetchPost } from '../../actions/postActions';
 import { fetchComments } from '../../actions/commentsActions';
+import { fetchUser } from '../../actions/userActions';
+import Comment from '../../components/comment';
 
 import {styles} from './styles';
 
 const Post = ({
     route,
-    navigation,
     dispatch,
     post,
     comments,
+    user,
     hasErrors,
     loading
 }) => {
@@ -20,11 +22,12 @@ const Post = ({
        container, imageWrapper,image,bookmark,subscription,
        title, text,blogWrapper,subscriptionWrapper
    } = styles;
-   const {id} = route.params;
+   const {id,userId, navigation} = route.params;
    const url = {uri: `https://picsum.photos/200/200?random=${id}`}
    useEffect(() => {
     dispatch(fetchComments(id))
     dispatch(fetchPost(id))
+    dispatch(fetchUser(userId))
   }, [dispatch, route])
    return (
        <View style={container}>
@@ -37,7 +40,7 @@ const Post = ({
           </View>
           <TouchableOpacity onPress={() => navigation.navigate('userProfile')}>
           <Text style={{color: 'grey', fontFamily:'poppins-regular', fontSize: 15}}>
-              By <Text style={{fontWeight: 'bold'}}>Kelly Peter</Text>
+              By <Text style={{fontWeight: 'bold'}}>{user.name}</Text>
           </Text>
           </TouchableOpacity>
 
@@ -48,6 +51,13 @@ const Post = ({
               <Text style={text}>
               {post.body}
               </Text>
+              <Text style={{paddingVertical: 10, color: 'black',fontSize: 17}}>Comments</Text>
+
+              {
+                comments.map((comment, index) => (
+                <Comment key={index.toString()} comment={comment} navigation={navigation}/>
+                ))
+              }
           </View>
           </ScrollView>
 
@@ -70,6 +80,7 @@ const Post = ({
 const mapStateToProps = state => ({
     post: state.post.post,
     comments: state.comments.comments,
+    user: state.user.user,
     loading: { post: state.post.loading, comments: state.comments.loading },
     hasErrors: { post: state.post.hasErrors, comments: state.comments.hasErrors },
   })

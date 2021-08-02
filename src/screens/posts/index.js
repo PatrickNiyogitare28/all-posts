@@ -14,32 +14,6 @@ const {
 } = styles;
 
 const Posts = ({navigation, dispatch, loading, posts, hasErrors}) => {
-    // const posts = [
-    //     {
-    //         "userId": 1,
-    //         "id": 1,
-    //         "title": "delectus aut autem Lorem epsumno",
-    //         "completed": false
-    //     },
-    //     {
-    //         "userId": 1,
-    //         "id": 2,
-    //         "title": "delectus aut autem Lorem epsumno",
-    //         "completed": false
-    //     },
-    //     {
-    //         "userId": 1,
-    //         "id": 3,
-    //         "title": "delectus aut autem Lorem epsumno",
-    //         "completed": false
-    //     },
-    //     {
-    //         "userId": 1,
-    //         "id": 4,
-    //         "title": "delectus aut autem Lorem epsumno",
-    //         "completed": false
-    //     }
-    // ]
     useEffect(() => {
         dispatch(fetchPosts())
       }, [dispatch])
@@ -47,7 +21,7 @@ const Posts = ({navigation, dispatch, loading, posts, hasErrors}) => {
         <View style={container}>
           <View style={cardWrapper}>
 
-          <Header />
+          <Header navigation={navigation} />
           <View style={title}>
               <Text style={titleText}>Blogs</Text>
           </View>
