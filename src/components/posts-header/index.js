@@ -8,9 +8,11 @@ const {container, avatar} = styles;
 const PostsHeader = ({navigation}) => {
     return(
         <View style={container}>
+               <TouchableOpacity onPress={() => navigation.navigate('account')}>
                <Image source={require('../../../assets/icons/menu-icon.png')} />
-
-               <TouchableOpacity onPress={() => navigation.navigate('userProfile')}>
+               </TouchableOpacity>
+               
+               <TouchableOpacity onPress={() => navigation.navigate('account')}>
                <Image source={require('../../../assets/images/avatar.jpg')} style={avatar} />
                </TouchableOpacity>
 
