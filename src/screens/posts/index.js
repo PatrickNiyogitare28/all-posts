@@ -1,5 +1,8 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {View, Text,FlatList} from 'react-native';
+import { connect } from 'react-redux'
+import { fetchPosts } from '../../actions/postsActions'
+
 import {styles} from './styles';
 import Header from '../../components/posts-header';
 import SearchInput from '../../components/search-input';
@@ -10,33 +13,36 @@ const {
     container,title, titleText,floatingButtonWrapper, cardWrapper
 } = styles;
 
-const Posts = ({navigation}) => {
-    const posts = [
-        {
-            "userId": 1,
-            "id": 1,
-            "title": "delectus aut autem Lorem epsumno",
-            "completed": false
-        },
-        {
-            "userId": 1,
-            "id": 2,
-            "title": "delectus aut autem Lorem epsumno",
-            "completed": false
-        },
-        {
-            "userId": 1,
-            "id": 3,
-            "title": "delectus aut autem Lorem epsumno",
-            "completed": false
-        },
-        {
-            "userId": 1,
-            "id": 4,
-            "title": "delectus aut autem Lorem epsumno",
-            "completed": false
-        }
-    ]
+const Posts = ({navigation, dispatch, loading, posts, hasErrors}) => {
+    // const posts = [
+    //     {
+    //         "userId": 1,
+    //         "id": 1,
+    //         "title": "delectus aut autem Lorem epsumno",
+    //         "completed": false
+    //     },
+    //     {
+    //         "userId": 1,
+    //         "id": 2,
+    //         "title": "delectus aut autem Lorem epsumno",
+    //         "completed": false
+    //     },
+    //     {
+    //         "userId": 1,
+    //         "id": 3,
+    //         "title": "delectus aut autem Lorem epsumno",
+    //         "completed": false
+    //     },
+    //     {
+    //         "userId": 1,
+    //         "id": 4,
+    //         "title": "delectus aut autem Lorem epsumno",
+    //         "completed": false
+    //     }
+    // ]
+    useEffect(() => {
+        dispatch(fetchPosts())
+      }, [dispatch])
     return (
         <View style={container}>
           <View style={cardWrapper}>
@@ -65,4 +71,10 @@ const Posts = ({navigation}) => {
     )
 }
 
-export default Posts;
+const mapStateToProps = state => ({
+    loading: state.posts.loading,
+    posts: state.posts.posts,
+    hasErrors: state.posts.hasErrors,
+  })
+  
+  export default connect(mapStateToProps)(Posts)

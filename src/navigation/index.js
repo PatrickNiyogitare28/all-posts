@@ -11,7 +11,7 @@ import UserProfile from '../screens/user-profile';
 enableScreens();
 const Stack = createNativeStackNavigator();
 
-function MyStack() {
+function AppStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="onboard" component={Onboard} options={{headerShown: false}} />
@@ -37,4 +37,5 @@ function MyStack() {
   );
 }
 
-export default MyStack;
+
+export default AppStack;

@@ -5,7 +5,17 @@ import {NavigationContainer} from '@react-navigation/native';
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 
+import {createStore, applyMiddleware} from 'redux'
+import {Provider} from 'react-redux'
+import thunk from 'redux-thunk'
+import {composeWithDevTools} from 'redux-devtools-extension'
+
 import AppStack from './src/navigation';
+import rootReducer from './src/reducers'
+
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
+
+
 
 const getFonts = () =>
   Font.loadAsync({
@@ -18,9 +28,11 @@ export default function App() {
 
   if(fontsLoaded){
     return (
+     <Provider store={store}>
       <NavigationContainer>
         <AppStack/>
       </NavigationContainer>
+      </Provider>
    );
 
   }else{

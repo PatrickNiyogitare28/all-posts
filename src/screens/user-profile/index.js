@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, ImageBackground, Image} from 'react-native';
+import {View, Text, ImageBackground, Image, TouchableOpacity} from 'react-native';
 import AuthButton from '../../components/auth-button';
 import {styles, registerBtnStyles, loginBtnStyles} from './styles';
 
@@ -16,7 +16,12 @@ const Profile = ({navigation}) => {
              <View style={{flex: 1, height:'100%', justifyContent:'space-between'}}>
               <View style={{height: '90%'}}>
               <View style={header}>
-                <Image source={require("../../../assets/icons/back-arrow.png")} style={{width:40, height:40}}/>
+                <TouchableOpacity  onPress={() => navigation.goBack()}>
+                <Image 
+                 source={require("../../../assets/icons/back-arrow.png")} 
+                 style={{width:40, height:40}}
+                 />
+                 </TouchableOpacity>
                 <Image source={require("../../../assets/icons/white-menu.png")} style={{width:40, height:40}}/>
               </View>
               <View style={profileImageContainer}>

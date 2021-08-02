@@ -1,18 +1,36 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Image, Text, ScrollView, TouchableOpacity} from 'react-native';
 import {Icon} from 'react-native-elements';
+import { connect } from 'react-redux'
+import { fetchPost } from '../../actions/postActions';
+import { fetchComments } from '../../actions/commentsActions';
+
 import {styles} from './styles';
 
-const Post = ({navigation}) => {
+const Post = ({
+    route,
+    navigation,
+    dispatch,
+    post,
+    comments,
+    hasErrors,
+    loading
+}) => {
    const {
        container, imageWrapper,image,bookmark,subscription,
        title, text,blogWrapper,subscriptionWrapper
    } = styles;
+   const {id} = route.params;
+   const url = {uri: `https://picsum.photos/200/200?random=${id}`}
+   useEffect(() => {
+    dispatch(fetchComments(id))
+    dispatch(fetchPost(id))
+  }, [dispatch, route])
    return (
        <View style={container}>
           <ScrollView style={blogWrapper} showsVerticalScrollIndicator={false}>
           <View style={imageWrapper}>
-              <Image source={require("../../../assets/images/post-image.jpg")} style={image}/>
+              <Image source={url} style={image}/>
               <View style={bookmark}>
                 <Icon name="bookmark" color="black" /> 
               </View>
@@ -25,23 +43,11 @@ const Post = ({navigation}) => {
 
           <View>
               <Text style={title}>
-                   How to become a master in colour pallete ?
+                  {post.title}
               </Text>
               <Text style={text}>
-              cover: Scale the image uniformly (maintain the image's aspect ratio)
-              so that both dimensions (width and height) of the image will be equal
-              to or larger than the corresponding dimension of the view (minus padding).
-
-              contain: Scale the image uniformly (maintain the image's aspect ratio) so that both
-              dimensions (width and height) of the image will be equal to or less than the corresponding dimension of the view (minus padding).
-
-              stretch: Scale width and height independently, This may change the aspect
-               ratio of the src.
-
-               
+              {post.body}
               </Text>
-
-            
           </View>
           </ScrollView>
 
@@ -61,4 +67,11 @@ const Post = ({navigation}) => {
    )
 }
 
-export default Post;
+const mapStateToProps = state => ({
+    post: state.post.post,
+    comments: state.comments.comments,
+    loading: { post: state.post.loading, comments: state.comments.loading },
+    hasErrors: { post: state.post.hasErrors, comments: state.comments.hasErrors },
+  })
+  
+  export default connect(mapStateToProps)(Post)

@@ -4,13 +4,15 @@ import {styles} from './styles';
 
 const PostItem = ({post, navigation}) => {
     const {container,imageWrapper, descriptionWrapper, image,date,dateText} = styles;
+    const {title} = post;
+    const url = {uri: `https://picsum.photos/200/200?random=${post.id}`}
     const handleOnNavigate = () => {
-        navigation.navigate('post')
+        navigation.navigate('post',{id: post.id})
     }
     return (
         <TouchableOpacity style={container} onPress={() => handleOnNavigate()}>
             <View style={imageWrapper}>
-                <Image style={image} source={require("../../../assets/images/post-image.jpg")} />
+                <Image style={image} source={url} />
                 <View style={date}>
                     <Text style={dateText}>3 Feb</Text>
                 </View>
@@ -29,7 +31,10 @@ const PostItem = ({post, navigation}) => {
                     fontFamily: 'poppins-bold',
                     color:'#636363'
                 }}>
-                    {post.title}
+                    {/* {post.title.substring(1,40)} */}
+                    {
+                        (title.length > 40) ? title.substring(1,40)+" ..." : title
+                    }
                 </Text>
                 </View>
 
