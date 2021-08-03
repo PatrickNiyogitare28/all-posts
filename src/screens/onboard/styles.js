@@ -66,7 +66,7 @@ import {StyleSheet} from 'react-native';
         marginTop: 50
     },
     contactsWrapper: {
-        width: '75%',
+        width: '90%',
         marginTop: 60,
         flexDirection: 'row',
         justifyContent: 'space-between',
