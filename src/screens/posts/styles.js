@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     paddingTop: 10
   },
   titleText: {
-      fontSize: 40,
+      fontSize: 30,
       fontFamily: 'poppins-bold'
   },
   cardWrapper: {

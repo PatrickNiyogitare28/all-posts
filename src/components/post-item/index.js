@@ -21,13 +21,13 @@ const PostItem = ({post, navigation}) => {
                 <View>
                 <Text style={{
                     color: '#C7C7C7',
-                    fontSize: 15,
+                    fontSize: 11,
                     fontWeight: 'bold',
                     fontFamily: 'poppins-regular'
                 }}>05 min Read</Text>
 
                 <Text style={{
-                    fontSize: 20,
+                    fontSize: 18,
                     fontFamily: 'poppins-bold',
                     color:'#636363'
                 }}>

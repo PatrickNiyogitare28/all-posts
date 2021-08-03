@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
     container: {
        flexDirection:'row',
        justifyContent:'space-between',
-       paddingTop:15,
+       marginTop: 30
     },
     imageWrapper: {
       width: '45%',
