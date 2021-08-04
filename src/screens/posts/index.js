@@ -21,17 +21,17 @@ const Posts = ({navigation, dispatch, loading, posts, hasErrors}) => {
       }, [dispatch])
    
       const handleSearch = (value) => {
-      var tokens = value
+      let tokens = value
         .toLowerCase()
         .split(' ')
         .filter(function (token) {
           return token.trim() !== '';
         });
       if (tokens.length) {
-        var searchTermRegex = new RegExp(tokens.join('|'), 'gim');
-        var filteredList = posts.filter(function (post) {
-          var postString = '';
-              postString += post['title'].toString().toLowerCase().trim() + ' ';
+        let searchTermRegex = new RegExp(tokens.join('|'), 'gim');
+        let filteredList = posts.filter(function (post) {
+          let postString = '';
+              postString += post['title'].toString().substring(0,20).toLowerCase().trim() + ' ';
           return postString.match(searchTermRegex);
         });
         setFilteredPosts(filteredList);
