@@ -1,9 +1,10 @@
-import React from 'react';
-import {View, Text, Image} from 'react-native';
+import React, { useState } from 'react';
+import {View, Text, Image, Switch} from 'react-native';
 
 import {styles} from './styles'
 
 const Account = () => {
+    const [isEnabled, setIsEnable] = useState(false);
     const {
         container, image, name, highlight,profileWrapper,
         sectionImage, section, sectionLabel,itemsContainer,
@@ -41,12 +42,13 @@ const Account = () => {
          </View>
          <View style={notification}>
              <Text style={notificationLabel}>Notifications</Text>
-             <Image source={require('../../../assets/icons/toggle-switch.png')}
-              style={{
-                  width: 50,
-                  height: 20
-              }}
-             />
+             <Switch
+                        trackColor={{ false: "#AFAFAF7A", true: "#08B1BD" }}
+                        thumbColor={isEnabled ? "#fff" : "#F4F3F4"}
+                        ios_backgroundColor="#AFAFAF7A"
+                        onValueChange={() => setIsEnable(!isEnabled)}
+                        value={isEnabled}
+                    />
          </View>
          
         </View>
