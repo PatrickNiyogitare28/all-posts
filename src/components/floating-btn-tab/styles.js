@@ -6,16 +6,13 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         width: '90%',
     },
-    latestTab: {
+    tab: {
+        display:'flex',
         height: 20,
         justifyContent: 'space-between',
         alignItems:'center'
     }, 
-    latestTabLabel:{
-        fontSize: 17,
-        fontFamily:'poppins-regular',
-        color: '#757575'
-    },
+  
     tabLabel: {
       fontSize: 17,
       fontFamily:'poppins-regular',

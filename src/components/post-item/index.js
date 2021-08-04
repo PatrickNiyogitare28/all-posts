@@ -31,7 +31,7 @@ const PostItem = ({post, navigation, excerpt}) => {
                     fontFamily: 'poppins-bold',
                     color:'#636363'
                 }}>
-                    {excerpt ? title.substring(0, 30) : title}
+                    {excerpt ? title.substring(0, 20) : title}
                 </Text>
                 </View>
 

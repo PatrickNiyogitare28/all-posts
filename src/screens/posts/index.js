@@ -14,12 +14,15 @@ const {
 } = styles;
 
 const Posts = ({navigation, dispatch, loading, posts, hasErrors}) => {
-    const  [filteredPosts, setFilteredPosts] = useState([]);
+    const [filteredPosts, setFilteredPosts] = useState([]);
+    const [showPostsList, setShowPostsLists] = useState(true);
+    const [tabIndex, setTabIndex] =  useState(1);
     useEffect(() => {
         dispatch(fetchPosts())
         setFilteredPosts(posts);
-      }, [dispatch])
-   
+        setShowPostsLists(true);
+      }, [dispatch, tabIndex])
+      
       const handleSearch = (value) => {
       var tokens = value
         .toLowerCase()
@@ -31,11 +34,16 @@ const Posts = ({navigation, dispatch, loading, posts, hasErrors}) => {
         var searchTermRegex = new RegExp(tokens.join('|'), 'gim');
         var filteredList = posts.filter(function (post) {
           var postString = '';
-              postString += post['title'].toString().toLowerCase().trim() + ' ';
+              postString += post['title'].toString().substring(0,20).toLowerCase().trim() + ' ';
           return postString.match(searchTermRegex);
         });
         setFilteredPosts(filteredList);
+        setShowPostsLists(false)
       }
+      }
+
+      const onTab = (index) => {
+        setTabIndex(index);
       }
     return (
         <View style={container}>
@@ -50,7 +58,7 @@ const Posts = ({navigation, dispatch, loading, posts, hasErrors}) => {
           <View style={{height: '75%'}}>
             <FlatList
             showsVerticalScrollIndicator={false}
-            data={filteredPosts}
+            data={(showPostsList)? posts:filteredPosts}
             keyExtractor={(post) => post.id.toString()}
             renderItem={({ item }) => (
                 <PostItem post={item} navigation={navigation} excerpt />
@@ -59,7 +67,7 @@ const Posts = ({navigation, dispatch, loading, posts, hasErrors}) => {
           </View>
         </View>
         <View style={floatingButtonWrapper}>
-           <FloatButtonTab />
+           <FloatButtonTab onTab={onTab} />
         </View>
         </View>
     )
