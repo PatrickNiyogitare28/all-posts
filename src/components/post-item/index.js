@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text,Image, TouchableOpacity} from 'react-native';
 import {styles} from './styles';
 
-const PostItem = ({post, navigation}) => {
+const PostItem = ({post, navigation, excerpt}) => {
     const {container,imageWrapper, descriptionWrapper, image,date,dateText} = styles;
     const {title} = post;
     const url = {uri: `https://picsum.photos/200/200?random=${post.id}`}
@@ -21,20 +21,17 @@ const PostItem = ({post, navigation}) => {
                 <View>
                 <Text style={{
                     color: '#C7C7C7',
-                    fontSize: 15,
+                    fontSize: 11,
                     fontWeight: 'bold',
                     fontFamily: 'poppins-regular'
                 }}>05 min Read</Text>
 
                 <Text style={{
-                    fontSize: 20,
+                    fontSize: 18,
                     fontFamily: 'poppins-bold',
                     color:'#636363'
                 }}>
-                    {/* {post.title.substring(1,40)} */}
-                    {
-                        (title.length > 40) ? title.substring(1,40)+" ..." : title
-                    }
+                    {excerpt ? title.substring(0, 30) : title}
                 </Text>
                 </View>
 
